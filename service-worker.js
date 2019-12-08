@@ -1,4 +1,4 @@
-const CACHE_NAME = "footstop";
+const CACHE_NAME = "footstop-v1";
 var urlsToCache = [
   "/",
   "/nav.html",

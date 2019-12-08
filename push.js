@@ -1,4 +1,4 @@
-var webPush = require('web-push');
+var webPush = require("web-push");
 
 const vapidKeys = {
   publicKey:

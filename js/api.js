@@ -32,7 +32,7 @@ getCompetitionList = () => {
                     <tr>
                     <td>
                     <a href="./team_detail.html?id=${item.team.id}"><span
-                    ><img src="${item.team.crestUrl}" style="width:20px;" alt="" /> ${item.team.name}</span
+                    ><img src="${item.team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="width:20px;" alt="" /> ${item.team.name}</span
                   ></a>
                       
                     </td>
@@ -68,7 +68,7 @@ getCompetitionList = () => {
           <tr>
           <td>
           <a href="./team_detail.html?id=${item.team.id}"><span
-          ><img src="${item.team.crestUrl}" style="width:20px;" alt="" /> ${item.team.name}</span
+          ><img src="${item.team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="width:20px;" alt="" /> ${item.team.name}</span
         ></a>
             
           </td>
@@ -95,7 +95,7 @@ getLikedTeams = () => {
         teamsHTML += `
               <div class="card">
                   <div class="team-detail-logo-container">
-                      <img class="team-logo" src="${item.crestUrl}" />
+                      <img class="team-logo" src="${item.crestUrl.replace(/^http:\/\//i, 'https://')}" />
                   </div>
                   <div class="card-content">
                     <span class="card-title truncate">${item.name}</span>
@@ -208,7 +208,7 @@ getLikedTeamById = () => {
         <div class="card">
           <div class="team-detail-header">
             <div class="team-detail-logo-container">
-              <img class="team-detail-logo" src="${data.crestUrl}" />
+              <img class="team-detail-logo" src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
             </div>
             <div class="team-detail-name"><h3>${data.name}</h3></div>
           </div>
@@ -260,7 +260,7 @@ getTeamById = () => {
                 <div class="team-detail-header">
 
                   <div class="team-detail-logo-container">
-                    <img class="team-detail-logo" src="${data.crestUrl}" />
+                    <img class="team-detail-logo" src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
                   </div>
                   <div class="team-detail-name"><h3>${data.name}</h3></div>
                 </div>
@@ -312,7 +312,7 @@ getTeamById = () => {
           <div class="card">
             <div class="team-detail-header">
               <div class="team-detail-logo-container">
-                <img class="team-detail-logo" src="${data.crestUrl}" />
+                <img class="team-detail-logo" src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
               </div>
               <div class="team-detail-name"><h3>${data.name}</h3></div>
               </div>

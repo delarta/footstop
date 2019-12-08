@@ -23,8 +23,6 @@ getCompetitionList = () => {
       .then(function(response) {
         if (response) {
           response.json().then(function(data) {
-            console.log(data);
-
             var teamsHTML = "";
             data.standings[0].table.forEach(function(item) {
               if (item.crestUrl !== null) {
@@ -32,7 +30,10 @@ getCompetitionList = () => {
                     <tr>
                     <td>
                     <a href="./team_detail.html?id=${item.team.id}"><span
-                    ><img src="${item.team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="width:20px;" alt="" /> ${item.team.name}</span
+                    ><img src="${item.team.crestUrl.replace(
+                      /^http:\/\//i,
+                      "https://"
+                    )}" style="width:20px;" alt="" /> ${item.team.name}</span
                   ></a>
                       
                     </td>
@@ -59,8 +60,6 @@ getCompetitionList = () => {
     .then(status)
     .then(json)
     .then(function(data) {
-      console.log(data.standings, "data.standings.table");
-
       var teamsHTML = "";
       data.standings[0].table.forEach(function(item) {
         if (item.crestUrl !== null) {
@@ -68,7 +67,10 @@ getCompetitionList = () => {
           <tr>
           <td>
           <a href="./team_detail.html?id=${item.team.id}"><span
-          ><img src="${item.team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="width:20px;" alt="" /> ${item.team.name}</span
+          ><img src="${item.team.crestUrl.replace(
+            /^http:\/\//i,
+            "https://"
+          )}" style="width:20px;" alt="" /> ${item.team.name}</span
         ></a>
             
           </td>
@@ -88,20 +90,24 @@ getCompetitionList = () => {
 };
 getLikedTeams = () => {
   getAllFavTeamStore().then(teams => {
-    console.log(teams);
     var teamsHTML = "";
     teams.forEach(function(item) {
       if (item.crestUrl !== null) {
         teamsHTML += `
               <div class="card">
                   <div class="team-detail-logo-container">
-                      <img class="team-logo" src="${item.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                      <img class="team-logo" src="${item.crestUrl.replace(
+                        /^http:\/\//i,
+                        "https://"
+                      )}" />
                   </div>
                   <div class="card-content">
                     <span class="card-title truncate">${item.name}</span>
                   </div>
                 <div class="card-action">
-                  <a href="./team_detail.html?id=${item.id}&liked=true">View Detail</a>
+                  <a href="./team_detail.html?id=${
+                    item.id
+                  }&liked=true">View Detail</a>
                   <a onclick="deleteItem(${item.id})">Delete Item</a>
                 </div>
               </div>
@@ -113,11 +119,9 @@ getLikedTeams = () => {
   });
 };
 
-
 getTeams = () => {
   if ("caches" in window) {
     caches.match(base_url + "teams").then(function(response) {
-      console.log(response);
       if (response) {
         response.json().then(function(data) {
           var teamsHTML = "";
@@ -131,7 +135,10 @@ getTeams = () => {
 
                 <a href="./team_detail.html?id=${item.id}">
                   <div class="card-image waves-effect waves-block waves-light">
-                    <img class="team-logo" src="${item.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                    <img class="team-logo" src="${item.crestUrl.replace(
+                      /^http:\/\//i,
+                      "https://"
+                    )}" />
                   </div>
                 </a>
                 </div>
@@ -157,7 +164,6 @@ getTeams = () => {
     .then(status)
     .then(json)
     .then(function(data) {
-      console.log(data);
       var teamsHTML = "";
       data.teams.forEach(function(item) {
         if (item.crestUrl !== null) {
@@ -169,7 +175,10 @@ getTeams = () => {
 
             <a href="./team_detail.html?id=${item.id}">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="team-logo" src="${item.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                <img class="team-logo" src="${item.crestUrl.replace(
+                  /^http:\/\//i,
+                  "https://"
+                )}" />
               </div>
             </a>
             </div>
@@ -190,11 +199,8 @@ getTeams = () => {
 getLikedTeamById = () => {
   var urlParams = new URLSearchParams(window.location.search);
   var idParam = urlParams.get("id");
-  console.log(idParam);
 
   getFavTeamById(idParam).then(data => {
-    console.log(data);
-
     var competitions = "";
     data.activeCompetitions.forEach(
       item => (competitions += `<li class="collection-item">${item.name}</li>`)
@@ -208,7 +214,10 @@ getLikedTeamById = () => {
         <div class="card">
           <div class="team-detail-header">
             <div class="team-detail-logo-container">
-              <img class="team-detail-logo" src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+              <img class="team-detail-logo" src="${data.crestUrl.replace(
+                /^http:\/\//i,
+                "https://"
+              )}" />
             </div>
             <div class="team-detail-name"><h3>${data.name}</h3></div>
           </div>
@@ -244,7 +253,6 @@ getTeamById = () => {
       caches.match(base_url + "teams/" + idParam).then(function(response) {
         if (response) {
           response.json().then(function(data) {
-            console.log(data);
             var competitions = "";
             data.activeCompetitions.forEach(
               item =>
@@ -260,7 +268,10 @@ getTeamById = () => {
                 <div class="team-detail-header">
 
                   <div class="team-detail-logo-container">
-                    <img class="team-detail-logo" src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                    <img class="team-detail-logo" src="${data.crestUrl.replace(
+                      /^http:\/\//i,
+                      "https://"
+                    )}" />
                   </div>
                   <div class="team-detail-name"><h3>${data.name}</h3></div>
                 </div>
@@ -297,7 +308,6 @@ getTeamById = () => {
       .then(status)
       .then(json)
       .then(function(data) {
-        console.log(data);
         var competitions = "";
         data.activeCompetitions.forEach(
           item =>
@@ -312,7 +322,10 @@ getTeamById = () => {
           <div class="card">
             <div class="team-detail-header">
               <div class="team-detail-logo-container">
-                <img class="team-detail-logo" src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                <img class="team-detail-logo" src="${data.crestUrl.replace(
+                  /^http:\/\//i,
+                  "https://"
+                )}" />
               </div>
               <div class="team-detail-name"><h3>${data.name}</h3></div>
               </div>

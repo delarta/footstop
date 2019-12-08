@@ -1,4 +1,4 @@
-const CACHE_NAME = "footstop-v1";
+const CACHE_NAME = "footstop-v2";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -7,8 +7,20 @@ var urlsToCache = [
   "/pages/team.html",
   "/pages/likedTeam.html",
   "/team_detail.html",
+
   "/css/materialize.min.css",
   "/css/style.css",
+  
+  "/android-chrome-192x192.png",
+  "/android-chrome-512x512.png",
+  "/apple-touch-icon.png",
+  "/favicon-16x16.png",
+  "/favicon-32x32.png",
+  "/mstile-150x150.png",
+  "/safari-pinned-tab.svg",
+  "/favicon.ico",
+  "/browserconfig.xml",
+
   "/js/materialize.min.js",
   "/js/nav.js",
   "/js/api.js",
@@ -59,27 +71,6 @@ self.addEventListener("activate", function(event) {
   );
 });
 
-self.addEventListener('notificationclick', event => {
-  event.notification.close();
-  if(!event.action){
-    console.log('Notofication Clicked')
-    return
-  }
-
-  switch(event.action){
-    case 'yes-action':
-      console.log('User Clicked Yes Action')
-      clients.openWindow('https://google.com')
-      break;
-    case 'no-action':
-      console.log('User Clicked No Action')
-      break;
-    default:
-      console.log('Unrecognized case')
-      break;
-  }
-})
-
 self.addEventListener('push', function(event) {
   let body;
   if (event.data) {
@@ -89,7 +80,7 @@ self.addEventListener('push', function(event) {
   }
   let options = {
     body: body,
-    icon: './icon.png',
+    icon: './android-chrome-192x192.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
